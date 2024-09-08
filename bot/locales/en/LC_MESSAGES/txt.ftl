@@ -1,0 +1,1 @@
+start-answer = Hello, I'm bot. You're - { $username }.

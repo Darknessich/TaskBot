@@ -1,0 +1,1 @@
+start-answer = Привет я бот, а ты - { $username }
