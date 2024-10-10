@@ -3,14 +3,13 @@ import logging
 from aiogram import Bot, Dispatcher
 from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode
-from aiogram_dialog import setup_dialogs
 from fluentogram import TranslatorHub
 
 from bot.core import Settings
+from bot.dialogs import setup_dialogs
 from bot.utils.i18n import create_translator_hub
 from bot.middlewares.i18n import TranslatorRunnerMiddleware
 from bot.handlers.commands import router
-from bot.dialogs.start.dialogs import start_dialog
 
 logging.basicConfig(
     level=logging.DEBUG,
@@ -30,11 +29,10 @@ async def main() -> None:
 
     translator_hub: TranslatorHub = create_translator_hub()
 
-    dp.include_router(start_dialog)
     dp.include_router(router)
-    dp.update.middleware(TranslatorRunnerMiddleware())
-
     setup_dialogs(dp)
+
+    dp.update.middleware(TranslatorRunnerMiddleware())
     await bot.delete_webhook(drop_pending_updates=True)
     await dp.start_polling(bot, _translator_hub=translator_hub)
 
