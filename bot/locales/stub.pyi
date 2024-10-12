@@ -6,7 +6,11 @@ class TranslatorRunner:
     
     start: Start
     button: Button
-    reminder: Reminder
+    header: Header
+    current: Current
+    enter: Enter
+    not_: Not_
+    file: File
 
 
 class Start:
@@ -19,12 +23,16 @@ class Button:
     list: ButtonList
     lang: ButtonLang
     set: ButtonSet
+    without: ButtonWithout
 
     @staticmethod
     def save() -> Literal["""Сохранить"""]: ...
 
     @staticmethod
     def cancel() -> Literal["""Отмена"""]: ...
+
+    @staticmethod
+    def back() -> Literal["""Назад"""]: ...
 
 
 class ButtonNew:
@@ -45,23 +53,43 @@ class ButtonLang:
     def setup() -> Literal["""Выбор языка"""]: ...
 
 
-class Reminder:
+class Header:
     @staticmethod
-    def description() -> Literal["""&lt;b&gt;Описание:&lt;/b&gt;"""]: ...
+    def description() -> Literal["""&lt;b&gt;Описание&lt;/b&gt;"""]: ...
 
     @staticmethod
-    def time() -> Literal["""&lt;b&gt;Время:&lt;/b&gt;"""]: ...
+    def date() -> Literal["""&lt;b&gt;Дата&lt;/b&gt;"""]: ...
 
     @staticmethod
-    def period() -> Literal["""&lt;b&gt;Периодичность:&lt;/b&gt;"""]: ...
+    def time() -> Literal["""&lt;b&gt;Время&lt;/b&gt;"""]: ...
 
     @staticmethod
-    def files() -> Literal["""&lt;b&gt;Файлы:&lt;/b&gt;"""]: ...
+    def period() -> Literal["""&lt;b&gt;Периодичность&lt;/b&gt;"""]: ...
+
+    @staticmethod
+    def files() -> Literal["""&lt;b&gt;Файлы&lt;/b&gt;"""]: ...
+
+
+class Current:
+    @staticmethod
+    def description() -> Literal["""&lt;b&gt;Текущее описание&lt;/b&gt;"""]: ...
+
+    @staticmethod
+    def date() -> Literal["""&lt;b&gt;Текущая дата&lt;/b&gt;"""]: ...
+
+    @staticmethod
+    def time() -> Literal["""&lt;b&gt;Текущее время&lt;/b&gt;"""]: ...
+
+    @staticmethod
+    def period() -> Literal["""&lt;b&gt;Текущая периодичность&lt;/b&gt;"""]: ...
 
 
 class ButtonSet:
     @staticmethod
     def description() -> Literal["""Изменить описание"""]: ...
+
+    @staticmethod
+    def date() -> Literal["""Изменить дату"""]: ...
 
     @staticmethod
     def time() -> Literal["""Изменить время"""]: ...
@@ -71,4 +99,36 @@ class ButtonSet:
 
     @staticmethod
     def files() -> Literal["""Изменить файлы"""]: ...
+
+
+class Enter:
+    @staticmethod
+    def description() -> Literal["""Введите новое описание"""]: ...
+
+    @staticmethod
+    def date() -> Literal["""Выберите дату"""]: ...
+
+    @staticmethod
+    def time() -> Literal["""Выберите время"""]: ...
+
+    @staticmethod
+    def period() -> Literal["""Выберите периодичность"""]: ...
+
+    @staticmethod
+    def files() -> Literal["""Добавьте/Удалите файлы"""]: ...
+
+
+class Not_:
+    @staticmethod
+    def periodically() -> Literal["""не периодично"""]: ...
+
+
+class ButtonWithout:
+    @staticmethod
+    def period() -> Literal["""Без периода"""]: ...
+
+
+class File:
+    @staticmethod
+    def delete() -> Literal["""Удалить"""]: ...
 

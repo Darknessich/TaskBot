@@ -2,22 +2,28 @@ from aiogram.types import CallbackQuery
 from aiogram_dialog import DialogManager
 from aiogram_dialog.widgets.kbd import Button
 
-from bot.states.new_reminder import NewReminderSG
+from bot.states.reminder import ReminderSG
 
 
 async def go_new_reminder(
     callback: CallbackQuery, button: Button, dialog_manager: DialogManager
 ):
-    await dialog_manager.start(state=NewReminderSG.start)
+    await dialog_manager.start(state=ReminderSG.start)
 
 
-async def go_reminders_list():
+async def go_reminders_list(
+    callback: CallbackQuery, button: Button, dialog_manager: DialogManager
+):
     pass
 
 
-async def go_passed_list():
+async def go_passed_list(
+    callback: CallbackQuery, button: Button, dialog_manager: DialogManager
+):
     pass
 
 
-async def go_setup_language():
+async def go_setup_language(
+    callback: CallbackQuery, button: Button, dialog_manager: DialogManager
+):
     pass
