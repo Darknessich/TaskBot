@@ -33,4 +33,4 @@ enter-files = Добавьте/Удалите файлы
 not_-periodically = не периодично
 button-without-period = Без периода
 
-file-delete = Удалить
+button-apply = Подтвердить

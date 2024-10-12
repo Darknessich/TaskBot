@@ -103,7 +103,7 @@ set_time_window_kbd = Group(
             on_click=handlers.TimeCallbackFactory(-_BIG_STEP, _DAY, _MINUTES, "time"),
         ),
     ),
-    SwitchTo(Format("{button_back}"), id="button_back", state=ReminderSG.start),
+    SwitchTo(Format("{button_apply}"), id="button_apply", state=ReminderSG.start),
 )
 
 set_period_window_kbd = Group(
@@ -182,19 +182,19 @@ set_period_window_kbd = Group(
             ),
         ),
     ),
+    SwitchTo(Format("{button_apply}"), id="button_apply", state=ReminderSG.start),
     SwitchTo(
         Format("{button_without_period}"),
         id="button_without_period",
         state=ReminderSG.start,
         on_click=handlers.on_period_delete,
     ),
-    SwitchTo(Format("{button_back}"), id="button_back", state=ReminderSG.start),
 )
 
 set_files_window_kbd = Group(
     ScrollingGroup(
         Select(
-            Format("{file_delete} {item.file_name}"),
+            Format("Delete {item.file_name}"),
             id="select_files",
             item_id_getter=operator.attrgetter("file_unique_id"),
             items="files",
@@ -204,5 +204,5 @@ set_files_window_kbd = Group(
         width=1,
         height=5,
     ),
-    SwitchTo(Format("{button_back}"), id="button_back", state=ReminderSG.start),
+    SwitchTo(Format("{button_apply}"), id="button_apply", state=ReminderSG.start),
 )

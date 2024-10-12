@@ -116,7 +116,7 @@ async def get_time_window_data(
         "enter_time": i18n.enter.time(),
         "current_time": i18n.current.time(),
         "reminder_time": get_time_str(time),
-        "button_back": i18n.button.back(),
+        "button_apply": i18n.button.apply(),
         "reminder_hours": f"{hours:02}",
         "reminder_minutes": f"{minutes:02}",
     }
@@ -139,7 +139,7 @@ async def get_period_window_data(
         "enter_period": i18n.enter.time(),
         "current_period": i18n.current.time(),
         "reminder_period": get_period_str(period, i18n.not_.periodically()),
-        "button_back": i18n.button.back(),
+        "button_apply": i18n.button.apply(),
         "button_without_period": i18n.button.without.period(),
         "reminder_days": f"{days:03}",
         "reminder_hours": f"{hours:02}",
@@ -158,7 +158,6 @@ async def get_files_window_data(
 
     return {
         "enter_files": i18n.enter.files(),
-        "button_back": i18n.button.back(),
-        "file_delete": i18n.file.delete(),
+        "button_apply": i18n.button.apply(),
         "files": files,
     }

@@ -10,7 +10,6 @@ class TranslatorRunner:
     current: Current
     enter: Enter
     not_: Not_
-    file: File
 
 
 class Start:
@@ -33,6 +32,9 @@ class Button:
 
     @staticmethod
     def back() -> Literal["""Назад"""]: ...
+
+    @staticmethod
+    def apply() -> Literal["""Применить"""]: ...
 
 
 class ButtonNew:
@@ -126,9 +128,4 @@ class Not_:
 class ButtonWithout:
     @staticmethod
     def period() -> Literal["""Без периода"""]: ...
-
-
-class File:
-    @staticmethod
-    def delete() -> Literal["""Удалить"""]: ...
 
