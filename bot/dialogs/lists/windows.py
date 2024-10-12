@@ -1,19 +1,24 @@
 import operator
 from aiogram_dialog import Window
 from aiogram_dialog.widgets.text import Format
-from aiogram_dialog.widgets.kbd import Select, Cancel, Back, Button
+from aiogram_dialog.widgets.kbd import Select, Cancel, Back, Button, ScrollingGroup
 
 from bot.states.lists import RemindersListSG, PassedListSG
 from . import handlers, getters
 
 reminders_list_window = Window(
     Format("{amount_reminders}: {amount}"),
-    Select(
-        Format("{item.description}"),
-        id="select_reminder",
-        item_id_getter=operator.attrgetter("id"),
-        items="reminders",
-        on_click=handlers.selected_reminder,
+    ScrollingGroup(
+        Select(
+            Format("{item.description}"),
+            id="select_reminder",
+            item_id_getter=operator.attrgetter("id"),
+            items="reminders",
+            on_click=handlers.selected_reminder,
+        ),
+        id="scrolling_reminders",
+        width=1,
+        height=5,
     ),
     Cancel(Format("{button_main_menu}")),
     state=RemindersListSG.list,
@@ -48,12 +53,17 @@ reminder_window = Window(
 
 passed_list_window = Window(
     Format("{amount_passed}: {amount}"),
-    Select(
-        Format("{item.description}"),
-        id="select_reminder",
-        item_id_getter=operator.attrgetter("id"),
-        items="reminders",
-        on_click=handlers.selected_reminder,
+    ScrollingGroup(
+        Select(
+            Format("{item.description}"),
+            id="select_reminder",
+            item_id_getter=operator.attrgetter("id"),
+            items="reminders",
+            on_click=handlers.selected_reminder,
+        ),
+        id="scrolling_passed",
+        width=1,
+        height=5,
     ),
     Cancel(Format("{button_main_menu}")),
     state=PassedListSG.list,

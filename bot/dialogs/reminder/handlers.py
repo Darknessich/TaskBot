@@ -7,6 +7,7 @@ from aiogram_dialog.widgets.kbd import Button, Calendar, Select
 from aiogram_dialog.widgets.input import TextInput, MessageInput
 
 from bot.states.reminder import ReminderSG
+from services.repository import ReminderRepository
 
 
 async def on_save_reminder(
@@ -26,6 +27,12 @@ async def on_save_reminder(
         await callback.answer("Выберите дату!")
         return
 
+    session = ctx.dialog_data.get("session")
+    reminder.update(chat_id=callback.message.chat.id)
+    if not reminder.get("id"):
+        await ReminderRepository.add_reminder(session, **reminder)
+    else:
+        await ReminderRepository.update_reminder(session, **reminder)
     await callback.answer("Сохранено!")
     await dialog_manager.done()
 

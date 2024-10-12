@@ -3,6 +3,7 @@ from typing import TYPE_CHECKING
 from aiogram.types import Document
 from aiogram_dialog import DialogManager
 from fluentogram import TranslatorRunner
+from sqlalchemy.ext.asyncio import AsyncSession
 
 if TYPE_CHECKING:
     from bot.locales.stub import TranslatorRunner
@@ -27,9 +28,11 @@ def get_files_str(files: list[Document]) -> str:
 async def get_new_reminder(
     dialog_manager: DialogManager,
     i18n: TranslatorRunner,
+    session: AsyncSession,
     **kwargs,
 ) -> dict:
     ctx = dialog_manager.current_context()
+    ctx.dialog_data.update(session=session)
 
     if dialog_manager.start_data and dialog_manager.start_data.get("reminder"):
         ctx.dialog_data.update(reminder=dialog_manager.start_data.get("reminder"))
