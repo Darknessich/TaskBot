@@ -6,7 +6,7 @@ from aiogram.fsm.storage.memory import MemoryStorage
 from aiogram.enums import ParseMode
 from fluentogram import TranslatorHub
 
-from bot.core import Settings
+from core import Settings
 from bot.dialogs import setup_dialogs
 from bot.utils.i18n import create_translator_hub
 from bot.middlewares.i18n import TranslatorRunnerMiddleware

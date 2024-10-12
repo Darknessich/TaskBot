@@ -30,6 +30,10 @@ async def get_new_reminder(
     **kwargs,
 ) -> dict:
     ctx = dialog_manager.current_context()
+
+    if dialog_manager.start_data and dialog_manager.start_data.get("reminder"):
+        ctx.dialog_data.update(reminder=dialog_manager.start_data.get("reminder"))
+
     if not ctx.dialog_data.get("reminder"):
         ctx.dialog_data.update(
             reminder={

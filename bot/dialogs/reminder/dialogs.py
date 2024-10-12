@@ -2,7 +2,7 @@ from aiogram_dialog import Dialog
 
 from . import windows
 
-new_reminder = Dialog(
+reminder = Dialog(
     windows.start_window,
     windows.set_description_window,
     windows.set_date_window,

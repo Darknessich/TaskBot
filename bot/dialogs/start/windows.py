@@ -22,11 +22,11 @@ start_window = Window(
         id="list_passed",
         on_click=handlers.go_passed_list,
     ),
-    Button(
-        Format("{button_lang_setup}"),
-        id="lang_setup",
-        on_click=handlers.go_setup_language,
-    ),
+    # Button(
+    #     Format("{button_lang_setup}"),
+    #     id="lang_setup",
+    #     on_click=handlers.go_setup_language,
+    # ),
     getter=getters.get_start,
     state=StartSG.start,
 )

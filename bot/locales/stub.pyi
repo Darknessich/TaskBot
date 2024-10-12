@@ -10,6 +10,7 @@ class TranslatorRunner:
     current: Current
     enter: Enter
     not_: Not_
+    amount: Amount
 
 
 class Start:
@@ -22,6 +23,7 @@ class Button:
     list: ButtonList
     lang: ButtonLang
     set: ButtonSet
+    main: ButtonMain
     without: ButtonWithout
 
     @staticmethod
@@ -34,7 +36,13 @@ class Button:
     def back() -> Literal["""Назад"""]: ...
 
     @staticmethod
-    def apply() -> Literal["""Применить"""]: ...
+    def done() -> Literal["""Выполнено"""]: ...
+
+    @staticmethod
+    def apply() -> Literal["""Подтвердить"""]: ...
+
+    @staticmethod
+    def delete() -> Literal["""Удалить"""]: ...
 
 
 class ButtonNew:
@@ -102,6 +110,17 @@ class ButtonSet:
     @staticmethod
     def files() -> Literal["""Изменить файлы"""]: ...
 
+    @staticmethod
+    def reminder() -> Literal["""Изменить"""]: ...
+
+    @staticmethod
+    def passed() -> Literal["""Создать аналогичное"""]: ...
+
+
+class ButtonMain:
+    @staticmethod
+    def menu() -> Literal["""Главное меню"""]: ...
+
 
 class Enter:
     @staticmethod
@@ -128,4 +147,12 @@ class Not_:
 class ButtonWithout:
     @staticmethod
     def period() -> Literal["""Без периода"""]: ...
+
+
+class Amount:
+    @staticmethod
+    def reminders() -> Literal["""&lt;b&gt;Всего запланнированных напоминаний&lt;/b&gt;"""]: ...
+
+    @staticmethod
+    def passed() -> Literal["""&lt;b&gt;Всего прошедших напоминаний&lt;/b&gt;"""]: ...
 

@@ -20,9 +20,15 @@ button-set-date = Изменить дату
 button-set-time = Изменить время
 button-set-period = Изменить период
 button-set-files = Изменить файлы
+button-set-reminder = Изменить
+button-set-passed = Создать аналогичное
 button-save = Сохранить
 button-cancel = Отмена
 button-back = Назад
+button-done = Выполнено
+button-apply = Подтвердить
+button-delete = Удалить
+button-main-menu = Главное меню
 
 enter-description = Введите новое описание
 enter-date = Выберите дату
@@ -33,4 +39,5 @@ enter-files = Добавьте/Удалите файлы
 not_-periodically = не периодично
 button-without-period = Без периода
 
-button-apply = Подтвердить
+amount-reminders = <b>Всего запланнированных напоминаний</b>
+amount-passed = <b>Всего прошедших напоминаний</b>

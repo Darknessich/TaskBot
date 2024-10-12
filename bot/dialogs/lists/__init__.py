@@ -3,5 +3,6 @@ from . import dialogs
 
 def get_dialogs():
     return [
-        dialogs.reminder,
+        dialogs.reminders_list,
+        dialogs.passed_list,
     ]
