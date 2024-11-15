@@ -1,0 +1,37 @@
+services:
+  database:
+    container_name: task-bot-database
+    image: postgres:16
+    restart: always
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER:-admin}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-admin}
+      - POSTGRES_DB=${POSTGRES_DB:-taskbot}
+    volumes:
+     - task-bot-data:/var/lib/postgresql/data
+    healthcheck:
+      test: psql -U admin -tAc 'select 1' -d taskbot
+      interval: 15s
+      timeout: 10s
+      retries: 10
+
+  migration:
+    container_name: task-bot-migration
+    build: .
+    depends_on:
+      database:
+        condition: service_healthy
+    command: sh -c "alembic upgrade head"
+
+  backend:
+    container_name: task-bot-backend
+    restart: always
+    build: .
+    depends_on:
+      database:
+        condition: service_healthy
+      migration:
+        condition: service_completed_successfully
+
+volumes:
+  task-bot-data:
