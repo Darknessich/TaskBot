@@ -5,6 +5,8 @@ from aiogram_dialog import DialogManager
 from fluentogram import TranslatorRunner
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from services.yadisk import YaDisk
+
 if TYPE_CHECKING:
     from bot.locales.stub import TranslatorRunner
 
@@ -29,10 +31,12 @@ async def get_new_reminder(
     dialog_manager: DialogManager,
     i18n: TranslatorRunner,
     session: AsyncSession,
+    yadisk: YaDisk,
     **kwargs,
 ) -> dict:
     ctx = dialog_manager.current_context()
     ctx.dialog_data.update(session=session)
+    ctx.dialog_data.update(yadisk=yadisk)
 
     if dialog_manager.start_data and dialog_manager.start_data.get("reminder"):
         ctx.dialog_data.update(reminder=dialog_manager.start_data.get("reminder"))

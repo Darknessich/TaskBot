@@ -13,6 +13,7 @@ from bot.dialogs import setup_dialogs
 from bot.utils.i18n import create_translator_hub
 from bot.middlewares.i18n import TranslatorRunnerMiddleware
 from bot.middlewares.session import DbSessionMiddleware
+from bot.middlewares.yadisk import YaDiskMiddleware
 from bot.handlers.commands import router
 
 logging.basicConfig(
@@ -43,6 +44,7 @@ async def main() -> None:
     setup_dialogs(dp)
 
     Sessionmaker = async_sessionmaker(engine, expire_on_commit=False)
+    dp.update.outer_middleware(YaDiskMiddleware(settings.yandex_key))
     dp.update.outer_middleware(DbSessionMiddleware(Sessionmaker))
     dp.update.middleware(TranslatorRunnerMiddleware())
     await bot.delete_webhook(drop_pending_updates=True)

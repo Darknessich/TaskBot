@@ -6,3 +6,4 @@ class Settings(BaseSettings):
     bot_token: str = ""
     pg_dns: str = ""
     redis_dns: str = ""
+    yandex_key: str = ""

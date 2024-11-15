@@ -27,8 +27,15 @@ async def on_save_reminder(
         await callback.answer("Выберите дату!")
         return
 
-    session = ctx.dialog_data.get("session")
     reminder.update(chat_id=callback.message.chat.id)
+    yadisk = ctx.dialog_data.get("yadisk")
+    for file in reminder.get("files"):  # Document
+        await yadisk.upload_file(
+            file_name=f"{callback.message.chat.id}_{file.file_unique_id}_{file.file_name}",
+            file=await callback.bot.download(file=file.file_id),
+        )
+
+    session = ctx.dialog_data.get("session")
     if not reminder.get("id"):
         await ReminderRepository.add_reminder(session, **reminder)
     else:
